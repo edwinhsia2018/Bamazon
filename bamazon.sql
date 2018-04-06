@@ -26,4 +26,4 @@ VALUE
 ("Grand Slam Baseball Bat", "Sports", 15.99, 25),
 ("Nalgene Water Bottle", "Outdoor", 16.99, 87),
 ("Camping Stove", "Outdoor", 39.99, 13),
-("Bear with it Beary-Flavored Bear Spray", "Outdoor", 9.99, 140)
+("Bear with it Beary-Flavored Bear Spray", "Outdoor", 9.99, 140);
