@@ -40,9 +40,9 @@ function purchase() {
         connection.query("SELECT * FROM products WHERE id='" + user.productID + "'",
             function (err, response) {
                 if (err) throw err;
-
                 var resQuantity = response[0].stock_quantity;
-                var buyQuantity = parseFloat(user.quantity);
+                var buyQuantity = 0;
+                buyQuantity += user.quantity;
                 var newStock = resQuantity - buyQuantity;
                 if (resQuantity < buyQuantity) {
                     console.log("We're out of stock!  Order less or order something else...");
@@ -60,7 +60,12 @@ function purchase() {
                         ],
                         function (error) {
                             if (error) throw error;
+                            var totalCost = (buyQuantity * response[0].price);
                             console.log("Purchase made!  Your order will hit you with a BAM soon!");
+                            console.log("____________________________\n");
+                            console.log(response[0].product_name + " purchased");
+                            console.log("Your total cost is: " + totalCost);
+                            console.log("____________________________");
                             console.log("Thanks for ordering with BAMazon!");
                         }
                     )
