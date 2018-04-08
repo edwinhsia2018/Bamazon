@@ -54,7 +54,7 @@ function viewProducts() {
 }
 
 function lowInventory() {
-    connection.query("SELECT * FROM products WHERE stock_quantity < 10", function (err, res) {
+    connection.query("SELECT * FROM products WHERE stock_quantity < 5", function (err, res) {
         if (err) throw err;
         console.table(res);
         promptManager();
@@ -81,8 +81,7 @@ function addInventory() {
         connection.query("SELECT * FROM products WHERE id=" + ans.id, function (err, resp) {
             if (err) throw err;
             var newStock = resp[0].stock_quantity + parseInt(ans.quantity);
-            connection.query("UPDATE products SET ? WHERE ?",
-                { stock_quantity: newStock }, { id: ans.id },
+            connection.query("UPDATE products SET stock_quantity = '" + newStock + "' WHERE id = '" + ans.id+ "'",
                 function (err, response) {
                     if (err) throw err;
                 });
